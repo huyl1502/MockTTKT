@@ -1,3 +1,5 @@
+#include <Windows.h>
+
 #include "MyGame.h"
 #include "ChessTable.h"
 #include "MyConsole.h"
@@ -35,7 +37,7 @@ void MyGame::Menu(WORD color) {
 			menuPlayWithBOT(color);
 			break;
 		case 3:
-			displayOldGame(replayGames[0]);
+			replay();
 			break;
 		case 4:
 			break;
@@ -147,21 +149,28 @@ void copyMatrix(Matrix* a, Matrix* b) {
 }
 
 void MyGame::saveGame(Matrix* m) {
-	copyMatrix(replayGames[0], m);
-
-	for (int i = 1; i < NUMBER_OF_GAME_REPLAY; i++) {
+	for (int i = NUMBER_OF_GAME_REPLAY - 1; i >= 1; i--) {
 		copyMatrix(replayGames[i], replayGames[i - 1]);
 	}
+	copyMatrix(replayGames[0], m);
 }
 
-void MyGame::displayOldGame(Matrix* m) {
+void MyGame::replay() {
 	DeleteArea(50, 50, 0, 0);
 	GotoXY(0, 0);
 
 	SetColor(6);
-	cout << "*--------------OLD GAME------------*" << endl;
+	cout << "*--------------REPLAY------------*" << endl;
 
-	ChessTable cb(2, 1);
+	for (int i = 0; i < NUMBER_OF_GAME_REPLAY; i++) {
+		displayOldGame(replayGames[i], i);
+	}
+}
+
+void MyGame::displayOldGame(Matrix* m, int index) {
+	SetColor(3 * index + 1);
+	GotoXY(index * 50, 5);
+	ChessTable cb(2, index * 10 + index + 1);
 	cb.display();
 
 	for (int i = 0; i < ROWS; i++) {
@@ -171,13 +180,17 @@ void MyGame::displayOldGame(Matrix* m) {
 		}
 	}
 
-	GotoXY(25, 25);
-	cout << endl;
-	char c;
-	do {
-		cout << "Press 'm' to back MAIN MENU: "; cin >> c;
-	} while (c != 'm');
-	Menu(6);
+	if (index == NUMBER_OF_GAME_REPLAY - 1) {
+		SetColor(6);
+		GotoXY(25, 25);
+		cout << endl;
+		char c;
+		do {
+			cout << "Press 'm' to back MAIN MENU: "; cin >> c;
+		} while (c != 'm');
+		DeleteArea(35, 135, 0, 0);
+		Menu(6);
+	}
 }
 
 void MyGame::Guild() {

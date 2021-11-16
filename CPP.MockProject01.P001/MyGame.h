@@ -26,5 +26,6 @@ public:
 
 	void saveGame(Matrix* m);
 
-	void displayOldGame(Matrix* m);
+	void displayOldGame(Matrix* m, int i);
+	void replay();
 };
