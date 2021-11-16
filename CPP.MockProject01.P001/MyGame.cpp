@@ -171,6 +171,7 @@ void MyGame::displayOldGame(Matrix* m) {
 		}
 	}
 
+	GotoXY(25, 25);
 	cout << endl;
 	char c;
 	do {
