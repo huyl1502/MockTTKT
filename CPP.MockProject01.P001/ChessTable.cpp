@@ -49,7 +49,6 @@ void ChessTable::gotoChessBox(short row, short col) {
 	GotoXY(topX + _LENGTH_HORIZONTAL / 2, topY + 1);
 }
 
-
 // 1: player 1; 2:player 2; 0: chua co ai thang
 //Kiem tra ai thang
 int playerWin(int count, short v) {
@@ -139,6 +138,15 @@ int aDiagonalWin(Matrix* m, int x, int y) {
 	}
 
 	return playerWin(rucount + ldcount, m->value[x][y]);
+}
+
+bool kiemTraHoa(Matrix* m) {
+	for (int i = 0; i < ROWS; i++) {
+		for (int j = 0; j < COLS; j++) {
+			if (m->value[i][j] == NULL) return false;
+		}
+	}
+	return true;
 }
 
 int ChessTable::checkWin(Matrix* m, int x, int y) {

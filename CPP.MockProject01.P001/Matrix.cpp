@@ -1,22 +1,20 @@
 #include "Matrix.h"
+#include "ChessTable.h"
 
 Matrix::Matrix()
 {
 	int i, j;
-	/*cout << "Nhap so hang : "; cin >> rows;
-	cout << "Nhap so cot : "; cin >> cols;
-	if (!(checkInput(rows) && checkInput(cols))) exit(0);*/
-
-	value = new int *[rows];
-	for (i = 0; i < rows; i++)
-		value[i] = new int[cols];
-	for (i = 0; i < rows; i++)
-		for (j = 0; j < cols; j++)
+	
+	value = new int *[ROWS];
+	for (i = 0; i < ROWS; i++)
+		value[i] = new int[COLS];
+	for (i = 0; i < ROWS; i++)
+		for (j = 0; j < COLS; j++)
 		{
-			cout << "v[" << i << j << "]: ";
-			cin >> value[i][j];
+			value[i][j] = NULL;
 		}
 }
+
 Matrix::Matrix(short r, short c)
 {
 	rows = r; cols = c;
@@ -82,4 +80,3 @@ Matrix operator + (Matrix a, Matrix b)
 			c.value[i][j] = a.value[i][j] + b.value[i][j];
 	return c;
 }
-

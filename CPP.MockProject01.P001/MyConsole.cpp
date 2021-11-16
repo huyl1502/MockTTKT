@@ -96,7 +96,6 @@ void SetBackgroundColor(WORD color) {
 }
 
 void DrawBox(short row, short col) {
-
 	int topX = _LENGTH_HORIZONTAL * col;
 	int topY = _LENGTH_VERTICAL * row;
 	//x col, y row

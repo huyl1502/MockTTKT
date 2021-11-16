@@ -6,6 +6,7 @@
 #define ROWS 10
 #define COLS 10
 #define CONDITION_WIN 3
+
 using namespace std;
 #pragma once
 //quan ly ban co
