@@ -174,8 +174,8 @@ void MyGame::displayOldGame(Matrix* m) {
 	cout << endl;
 	char c;
 	do {
-		cout << "Press 'c' to continue: "; cin >> c;
-	} while (c != 'c');
+		cout << "Press 'm' to back MAIN MENU: "; cin >> c;
+	} while (c != 'm');
 	Menu(6);
 }
 
@@ -184,14 +184,13 @@ void MyGame::Guild() {
 	GotoXY(0, 0);
 	SetColor(6);
 
-	cout << "*--------------GUILD------------*" << endl << endl;
-	cout << "Ban lan luot nhap toa do=(so dong,so cot)\n";
-	cout << "Ban khong duoc nhap len toa do da nhap,neu ban nhap sai se nhap lai\n";
-	cout << "Neu ben nao co >=5 quan co cua minh giong nhau lien tiep thi se thang\n";
+	cout << "*--------------HOW TO PLAY------------*" << endl << endl;
+	cout << "1. Lan luot nhap toa do (so _dong so_cot)\n";
+	cout << "2. Neu ben nao co " << CONDITION_WIN + 1 << " quan co cua minh giong nhau lien tiep thi se thang\n";
 	cout << endl;
 	char c;
 	do {
-		cout << "Press 'c' to continue: "; cin >> c;
-	} while (c != 'c');
+		cout << "Press 'm' to back MAIN MENU: "; cin >> c;
+	} while (c != 'm');
 	Menu(6);
 }
